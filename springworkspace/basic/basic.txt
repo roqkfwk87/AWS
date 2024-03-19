@@ -1,0 +1,21 @@
+postman에 들어가서 계정 만들기
+앱에 들어가면 overview 옆에 +버튼을 눌르고 HTML로 만들기
+GET에다가 https://www.naver.com 적은 후 send를 실행시킴
+body에 <!doctype html>이 뜸 
+
+postman 
+GET에다가 localhost:4000/main 입력
+
+사이트 참고해서 수정하기
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+
+전체를 수정하면 put
+일부분만 수정하면 patch 등
+이런식으로 구분하여 사용함 
+
+회원가입- post
+유저정보 보기- get 방식  
+게시물 수정하기 - put or patch
+회원탈퇴 - delete
+
+
