@@ -35,6 +35,7 @@ result = single++ *8; // 0
 // 선증가 후대입
 result = ++single * 8; // 16
 
+//선감소 후대입 
 result = single-- + 9 - ++single // 9
 console.log(result);
 
