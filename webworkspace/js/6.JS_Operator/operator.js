@@ -40,9 +40,10 @@ result = single-- + 9 - ++single // 9
 console.log(result);
 
 /*
-    - 
+    - + 단항 연산자는 숫자 타입이 아닌 피연산자에 사용하여 숫자 타입으로 변환함 
 */
-
+console.log(+10);
+console.log(+'10');
 
 
 /*

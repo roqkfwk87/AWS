@@ -16,7 +16,7 @@ cd : 폴더 이동
 . : 뒤
 
 ls -al : 숨긴파일까지 모든 정보를 다 보여줌 
-cd ../ : 뒤로 넘어감 
+cd ../ : 뒤로 넘어감
 
 ~ : 홈 디렉터리로 찾아감 
 
@@ -93,7 +93,6 @@ GitLens
 예) test/java/*/AppTest.java
 예) test/java/**/AppTest.java
 
-안녕하세요
 
 
 
