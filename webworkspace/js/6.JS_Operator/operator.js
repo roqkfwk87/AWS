@@ -32,8 +32,11 @@ let result = 0;
 // 선대입 후증가 
 result = single++ *8; // 0
 
+// 선증가 후대입
 result = ++single * 8; // 16
-console.log(result); 
+
+result = single-- + 9 - ++single // 9
+console.log(result);
 
 /*
     - 
