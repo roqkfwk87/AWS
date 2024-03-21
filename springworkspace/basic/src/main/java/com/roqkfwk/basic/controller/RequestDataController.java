@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.roqkfwk.basic.dto.SampleDto;
 
+import jakarta.validation.Valid;
+
 // 인스턴스를 생성해서 사용함? 
 @RestController
 // HTTP * localhost:4000/request-data/** 
@@ -101,18 +103,27 @@ public class RequestDataController {
     // @RequestBody() : 
     // - POST, PATCH, PUT 처럼 RequestBody로 데이터를 전송하는 메서드에서 데이터를 가져오기 위해 사용
     
+    // @PostMapping("/post")
+    // public String post(
+        // @RequestBody String text
+        // SampleDto 클래스를 인스턴스로 가져오기 
+    //     @RequestBody SampleDto dto 
+    // ) {
+    //     return "전송한 데이터 :" + dto.toString();
+    // }
+    // 전송한 데이터 :SampleDto(userId=qwer, userPassword=P!ssw0rd) 
+
+
     // HTTP POST localhost:4000/request-data/post
     @PostMapping("/post")
     public String post(
         // @RequestBody String text
-        // SampleDto 클래스를 인스턴스로 가져오기 
-        @RequestBody SampleDto dto 
+        // @Valid : 해당 payload에 대해서 유효성 검사를 실시하도록 함
+        @RequestBody @Valid SampleDto dto
     ) {
-        return "전송한 데이터 :" + dto.toString();
+        return "전송한 데이터 : " + dto.toString();
     }
-    // 전송한 데이터 :SampleDto(userId=qwer, userPassword=P!ssw0rd) 
-
-
+    
 }
 
 
