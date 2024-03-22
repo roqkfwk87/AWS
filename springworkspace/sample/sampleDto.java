@@ -13,4 +13,3 @@ public class sampleDto {
     private String length;
 }
 // http://localhost:4000/request-data/post
-raw , json
