@@ -11,3 +11,5 @@ public class BasicApplication {
 	}
 
 }
+
+//Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured. (데이터랑 유저아이디를 찾지 못해서 실행 X)
