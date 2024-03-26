@@ -92,7 +92,7 @@
     background-image: url('./resource/image/naver-button.png');
 }
 
-.text-link {
+.text-link { 
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -125,7 +125,8 @@
 
 .sign-in-image-box{
     min-width: 830px;
-    background-image: url('./resource/image/sign-in-background.png');
+    /* 파일을 추가/변경 후에 리소스 위치를 파악해서 수정해준다. */
+    background-image: url('../../resource/image/sign-in-background.png');
     background-size: cover;
 }
 
@@ -169,37 +170,6 @@
     width: 100%;
 }
 
-.input-box {
-    width: 100%;
-}
-
-.input-label {
-    color: rgba(138, 146, 166, 1);
-}
-
-.input-content-box {
-    display: flex;
-    gap: 10px;
-
-    margin-top: 8px;
-    margin-bottom: 4px;
-}
-
-.input-message {
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.primary {
-    color: rgba(58, 87, 232, 1);
-}
-
-.error {
-    color: rgba(255, 84, 62, 1);
-}
-
 .sign-in-button-container {
     display: flex;
     flex-direction: column;
@@ -216,11 +186,3 @@
     gap: 16px;
 }
 
-.sns-container-title {
-    color: rgba(138, 146, 166, 1);
-}
-
-.sns-button-container {
-    display: flex;
-    gap: 24px;
-}
