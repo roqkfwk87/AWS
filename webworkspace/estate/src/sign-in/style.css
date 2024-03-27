@@ -85,11 +85,11 @@
 }
 
 .kakao-button {
-    background-image: url('./resource/image/kakao-button.png');
+    background-image: url('../../resource/image/kakao-button.png');
 }
 
 .naver-button {
-    background-image: url('./resource/image/naver-button.png');
+    background-image: url('../../resource/image/naver-button.png');
 }
 
 .text-link { 
