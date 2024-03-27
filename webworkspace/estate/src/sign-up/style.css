@@ -7,7 +7,7 @@
 
 .sign-up-image-box {
     min-width: 830px;
-    background-image: url(../../resource/image/KakaoTalk_20240326_114405991.png);
+    background-image: url('../../resource/image/KakaoTalk_20240326_114405991.png');
     background-size: cover;
 }
 
