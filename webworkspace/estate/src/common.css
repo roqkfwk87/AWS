@@ -1,5 +1,7 @@
+/* 구글 폰트 - Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+/* 눈누 폰트 - Pretendard */
 @font-face {
     font-family: 'Pretendard';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
