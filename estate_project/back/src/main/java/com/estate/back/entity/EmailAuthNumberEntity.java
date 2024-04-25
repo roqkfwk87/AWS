@@ -18,6 +18,6 @@ import lombok.Setter;
 public class EmailAuthNumberEntity {
     @Id
     private String email;
-    private String authNUmber;
+    private String authNumber;
 
 }

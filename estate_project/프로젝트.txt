@@ -168,6 +168,13 @@ WHERE userId = :userId;
 findByUserId;
 existsByUserId;
 
+SELECT * 
+FROM user
+WHERE user_email = :userEmail;
+AND auth_number = :authNumber;
+
+findgByUserEmailAndAuthNumber
+
 
 
 
