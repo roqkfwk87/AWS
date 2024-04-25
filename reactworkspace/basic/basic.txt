@@ -1,0 +1,50 @@
+결과를 도출할 수 있게 해주는 것을 조건부 랜더링
+true && '홍길동' 홍길동
+true || '홍길동' true
+
+zustand - 상태관리 라이브러리 
+react-router : SPA 에서 url을 상태로 관리하는 라이브러리
+axios : HTTP 통신 라이브러리 
+react-cookie : 브라우저의 쿠리를 관리하는 라이브러리
+
+dayjs, chartjs, react-daum-postcode, socket-io
+
+ex) ◀ 1 2 3 4 5 6 7 8 9 10 ▶
+107 게시물
+
+한 페이지 게시물 5개씩 보여줌
+페이지네이션을 한 섹션당 10개를 보여줌 
+
+총 페이지 수 : 22
+totalPageCount = boardCount / 5
+(pageCount % 5 != 0) totalPageCount++;
+
+totalPageCount = Math.floor((boardCount - 1) / 5)
+
+5를 기준으로 나눴을 때 페이지
+1페이지 = 0쪽 
+1 = 1 0         
+2 = 1 0         
+3 = 1 0         
+4 = 1 0         
+5페이지 = 1쪽
+5 = 2 1             
+6 = 2 1             
+7 = 2 1
+8 = 2 1
+9 = 2 1
+10페이지 = 2쪽
+10 = 2 2
+10 = 3 2
+
+107 게시물
+페이지네이션을 한 섹션당 10개를 보여줌 
+
+총 섹션 수 : 3
+totalPageCount = Math.floor((boardCount - 1) / 5)
+totalSectionCount = Math.floor((totalPageCount - 1) / 10)
+
+이다
+
+
+

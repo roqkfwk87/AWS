@@ -1,0 +1,167 @@
+@font-face {
+    font-family:'KakaoRegular';
+    src: url('../font/KakaoRegular.ttf');
+}
+
+@font-face {
+    font-family:'KakaoBold';
+    src: url(../font/KakaoBold.ttf);
+}
+
+*{
+    font-family: KakaoRegular, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    min-width: 1712px;
+}
+
+#wrapper {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    width:1712px;
+}
+
+/*Title Box*/
+.title-box {
+    font-size: 52px;
+    /* 글자가 차지하는 높이 */
+    line-height: 78px;
+    /* 글자간의 간격 */
+    letter-spacing: -1px;
+    font-family: 'KakaoBold', sans-serif;
+    font-weight: 400;
+}
+
+/* content 값이 있어야만 브라우저에 출력되므로 빈값으로 지정해야 함*/
+.title-box::before {
+    background-image: url("https://www.kakaocorp.com/page/ico_tit_service.gif");
+    width: 78px;
+    height: 78px;
+    /* inline-block으로 인해 라인이 맞지 않으면 밑으로 정렬되버림 */
+    display: inline-block;
+    /* content 값이 있어야만 브라우저에 출력되므로 빈값으로 지정해야 함*/
+    content: "";
+    background-size: 100%;
+    /* 밑으로 잡힌 이미지를 위로 잡아서 설정함 */
+    vertical-align: top;
+}
+
+/* Contents Box */
+.contents-box {
+    display: grid;
+    grid-template:
+        "comunication busniess" 180px
+        "life-style shopping" 180px
+        "entertainment social" 180px
+        /1fr 1fr;
+        gap: 16px;
+}
+
+.content-card {
+    background-color: rgba(240, 240, 240, 1);
+    border-radius: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 64px;
+}
+
+.content-title {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.content-icons-box {
+    display: flex;
+    gap: 12px;
+}
+
+.icon-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background-size: 100%;
+}
+
+.icon-button:hover {
+    cursor: pointer;
+}
+
+.kakaotalk {
+    background-image: url('https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/kakaoService/c9424536018c00001.png');
+}
+
+.daum {
+    background-image: url('https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/kakaoService/c9425290018c00001.png');
+}
+
+.story {
+    background-image: url('https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/kakaoService/c942653a018c00001.png');
+}
+
+.more {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    line-height: 56px;
+    font-size: 32px;
+}
+
+.more:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/*More Box*/
+.more-box {
+    display: flex;
+    justify-content: center;
+}
+
+.more-button {
+    width: 316px;
+    height: 76px;
+    background-color: rgba(240, 240, 240, 1);
+    text-align: center;
+    /* 글자가 위로 올라감 */
+    /* line-height: 76px; */
+    font-size: 24px;
+    letter-spacing: -0.4px;
+    border-radius: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.more-button:hover {
+    cursor: pointer;
+}
+
+.round-black {
+    /* span자체가 inline이기에 width가 잡히지 않음 */
+    width: 24px;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    /* 값을 적용시키기 위해서 block으로 잡는다 */
+    display: block;
+    text-align: center;
+    line-height: 24px;
+    /* 둥글게 만들어줌 */
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+.more-button:hover.round-black {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
