@@ -2,23 +2,32 @@ import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router';
 import { AUTH_PATH, LOCAL_PATH, QNA_DETAIL_PATH, QNA_PATH, QNA_UPDATE_PATH, QNA_WRITE_PATH, RATIO_PATH, SERVICE_PATH } from './constant';
+import Authentication from './views/Authentication';
+import ServiceContainer from './views/NotFound';
+import Local from './layouts/ServiceContainer';
+import Ratio from './views/service/Ratio';
+import QnaList from './views/service/qna/QnaList';
+import QnaWrite from './views/service/qna/QnaWrite';
+import QnaDetail from './views/service/qna/QnaDetail';
+import QnaUpdate from './views/service/qna/QnaUpdate';
+import NotFound from './views/NotFound';
 
 function App() {
   return (
     <Routes>
-      <Route path={AUTH_PATH} element={<></>} />
-      <Route path={SERVICE_PATH} element={<></>}>
-        <Route path={LOCAL_PATH} element={<></>} />
-        <Route path={RATIO_PATH} element={<></>} />
+      <Route path={AUTH_PATH} element={<Authentication />} />
+      <Route path={SERVICE_PATH} element={<ServiceContainer />}>
+        <Route path={LOCAL_PATH} element={<Local />} />
+        <Route path={RATIO_PATH} element={<Ratio />} />
         <Route path={QNA_PATH} >
-          <Route index element={<></>} />
+          <Route index element={<QnaList />} />
           {/* write : 지정되어 있는 상태이기에 가장 먼저 적어줌 */}
-          <Route path={QNA_WRITE_PATH} element={<></>} />
-          <Route path={QNA_DETAIL_PATH} element={<></>} />
-          <Route path={QNA_UPDATE_PATH} element={<></>} />
+        <Route path={QNA_WRITE_PATH} element={<QnaWrite />} />
+          <Route path={QNA_DETAIL_PATH} element={<QnaDetail />} />
+          <Route path={QNA_UPDATE_PATH} element={<QnaUpdate />} />
         </Route>
       </Route>
-      <Route path='*' element={<></>} />
+      <Route path='*' element={<NotFound />} />
     </Routes>
   );
 }
