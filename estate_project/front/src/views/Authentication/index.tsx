@@ -102,7 +102,7 @@ function SignUp ({ onLinkClickHandler }: Props) {
 
   const [idButtonStatus, setIdButtonStatus] = useState<boolean>(false);
   const [emailButtonStatus, setEmailButtonStatus] = useState<boolean>(false);
-  const [authNumberButtonStatus, setAuthNumberBottonStatus] = useState<boolean>(false);
+  const [authNumberButtonStatus, setAuthNumberButtonStatus] = useState<boolean>(false);
 
   const [isIdCheck, setIdCheck] = useState<boolean>(false);
   const [isPasswordPattern, setPasswordPattern] = useState<boolean>(false);
@@ -240,7 +240,7 @@ function SignUp ({ onLinkClickHandler }: Props) {
   const onAuthNumberChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setAuthNumber(value);
-    setAuthNumberBottonStatus(value !== '');
+    setAuthNumberButtonStatus(value !== '');
     setAuthNumberCheck(false);
     setAuthNumberMessage('');
   }
@@ -301,7 +301,7 @@ export default function Authentication() {
     else setPage('sign-in');
   };
 
-  const AutenticationContents = page === 'sign-in' ? <SignIn onLinkClickHandler={onLinkClickHandler} /> : <SignUp onLinkClickHandler={onLinkClickHandler}/>;
+  const AuthenticationContents = page === 'sign-in' ? <SignIn onLinkClickHandler={onLinkClickHandler} /> : <SignUp onLinkClickHandler={onLinkClickHandler}/>;
 
   const imageBoxStyle = {backgroundImage: `url(${page === 'sign-in' ? SignInBackground : SignUpBackground})`};
 
@@ -312,7 +312,7 @@ export default function Authentication() {
       <div className="authentication-box">
         <div className="authentication-container">
           <div className="authentication-title h1">{'임대주택 가격 서비스'}</div>
-          { AutenticationContents }
+          { AuthenticationContents }
         </div>
       </div>
     </div>
