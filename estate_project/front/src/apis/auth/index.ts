@@ -36,7 +36,7 @@ export const IdCheckRequest = async (requestBody: IdCheckRequestDto) => {
 };
 
 // function: 이메일 인증 API 함수
-export const emailAuthRequest = async (requestBody: EmailAuthRequestDto) => {
+export const EmailAuthRequest = async (requestBody: EmailAuthRequestDto) => {
     const result = await axios
         .post(EMAIL_AUTH_REQUEST_URL, requestBody)
         .then(requestHandler<ResponseDto>)
@@ -45,7 +45,7 @@ export const emailAuthRequest = async (requestBody: EmailAuthRequestDto) => {
 };
 
 // function: 이메일 인증 확인 API 함수
-export const emailAuthCheckRequest = async (
+export const EmailAuthCheckRequest = async (
     requestBody: EmailAuthCheckRequestDto
 ) => {
     const result = await axios
