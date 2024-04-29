@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 
-export default function NotFound() {
-  return <div>NotFound</div>;
+export default function ServiceContainer() {
+  return <div>ServiceContainer</div>;
 
 }
