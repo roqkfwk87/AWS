@@ -1,0 +1,31 @@
+// Kakao
+// http://localhost:4000/api/v1/auth/oauth2/kakao
+{
+    "id": 3458617728,
+    "connected_at": "2024-04-29T05:39:27Z",
+    "properties": {
+        "nickname": "유진"
+    },
+    "kakao_account": {
+        "profile_nickname_needs_agreement": false,
+        "profile_image_needs_agreement": true,
+        "profile": {
+            "nickname": "유진",
+            "is_default_nickname": false
+        }
+    }
+}
+
+
+// NAVER
+// http://localhost:4000/api/v1/auth/oauth2/naver
+{
+    "resultcode": "00",
+    "message": "success",
+    "response": {
+        "id": "qXLRu16zgcwhbTUXzO16NnkCPbEmjb2XTPwF8zMr3bE",
+        "nickname": "vfkdk",
+        "profile_image": "https://ssl.pstatic.net/static/pwe/address/img_profile.png",
+        "name": "김유진"
+    }
+}
