@@ -12,17 +12,17 @@ import { useCookies } from 'react-cookie';
 import { useNavigate, useParams } from 'react-router';
 import { LOCAL_ABSOLUTE_PATH } from 'src/constant';
 
-//                    component                    //
+//                        component                   //
 export function Sns () {
 
-  //                    state                    //
+  //                      state                       //
   const { accessToken, expires } = useParams();
   const [cookies, setCookie] = useCookies();
 
-  //                    function                    //
+  //                     function                     //
   const navigator = useNavigate();
 
-  //                    effect                    //
+  //                      effect                      //
   useEffect(() => {
       if (!accessToken || !expires) return;
       const expiration = new Date(Date.now() + (Number(expires) * 1000));
