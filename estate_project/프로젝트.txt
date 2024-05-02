@@ -208,5 +208,64 @@ String userRole = userEntity.getUserRole();
 
 13. 'SU' 응답 처리 (userId, userRole 포함)
 
+---------------------------------------------------
+
+// board 
+
+0. 클라이언트로부터 Authorization 헤더와 Request Body를 포함하여 요청
+
+0.1 권한이 없는 사용자이면 'AF' 응답 처리 (403)
+0.2 유효하지 않은 데이터이면 'VF' 응답 처리 
+
+(title, contents), userId
+
+1. 데이터베이스의 user 테이블에서 해당 유저가 존재하는지 확인 
+1.1 존재하지 않은 유저라면 'AF' 응답 처리 (401)
+1.2 데이터베이스 오류가 발생하면 'DBE' 응답 처리 
+
+2. Board 테이블에 데이터 삽입 
+2.1 데이터베이스 오류가 발생하면 'DBE' 응답 처리 
+
+3. 'SU' 응답 처리 
+
+// BoardController
+http://localhost:4000/api/v1/auth/sign-in
+// user
+eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZXJ2aWNlMTIzNDUiLCJpYXQiOjE3MTQ2MTYxMDAsImV4cCI6MTcxNDY1MjEwMH0.Tu1qj40nfH4GORnpimjGthh9h-ZvK4tK4GYlkRtvD1k
+{
+    "userId" : "service12345",
+    "userPassword" : "qwer1234"
+    
+}
+
+Authorization에서 token 값을 입력후 
+post http://localhost:4000/api/v1/board/
+{
+    "title" : "asd(아무거나)",
+    "contents" : "asd(아무거나)"
+    
+}
+
+1. 인증 없이 -> "AF"
+2. 유효하지 않은 데이터 -> "VF"
+3. "SU"
 
 
+http://localhost:4000/api/v1/auth/sign-in
+// admin
+eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcxNDYxNjk3MywiZXhwIjoxNzE0NjUyOTczfQ.TUcro_oTpdOJNbgIKg3s0ahiplXtfT86AKxYapAJzSk
+{
+    "userId" : "admin",
+    "userPassword" : "qwer1234"
+    
+}
+
+post http://localhost:4000/api/v1/board/
+{
+    "title" : "테스트2",
+    "contents" : "테스트2"
+    
+}
+
+// front - views - qna 
+http://localhost:3000/service/qna/wirte
