@@ -286,12 +286,41 @@ findByOrderByReceptionNumberDesc();
 ------------- BoardController
 GET http://localhost:4000/api/v1/board/list
 
+---------------GetSearchBoardResponseDto
 
+SELECT *
+FROM board
+WHERE title LIKE '%searchWord%'
+ORDER BY reception_number DESC;
 
+findByTitleContainsOrderByReceptionNumberDesc();
 
+----- BoardController
+GET http://localhost:4000/api/v1/board/list/테스트
+GET http://localhost:4000/api/v1/board/list/클라이언트
 
+결과 전체 게시물 리스트
 
+총 게시물 수 : 316
+총 페이지 수 : 32((총게시물수 - 1) // 한페이지당게시물수) + 1
+총 섹션 수 : 4((총페이지수 - 1) // 한섹션당페이지수) + 1
 
+한 페이지 당 10개
+한 섹션 당 10페이지
+
+페이지 - 시작인덱스 ~ 종료인덱스
+1 - 0 ~ 9(페이지 - 1) * 10 ~ [페이지 * 10 - 1 / 마지막 인덱스]
+2 - 10 ~ 19
+3 - 20 ~ 29
+...
+31 - 300 ~ 309
+32 - 310 ~ 315
+
+섹션 - 시작페이지 ~ 종료페이지
+1 - 1 ~ 10(섹션 * 섹션당페이지수 - (섹션당페이지수 - 1)) ~ [섹션 * 10 / 마지막 페이지]
+2 - 11 ~ 20
+3 - 21 ~ 30
+4 - 31 ~ 32
 
 
 
