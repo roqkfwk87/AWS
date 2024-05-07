@@ -376,3 +376,9 @@ POST http://localhost:4000/api/v1/board/7/comment
 = 이미 작성된 답글 -> WC 
 SU 상태 후 한번더 send를 보내면 뜸 
 
+-------------------- front
+1. 답글 textarea 사이즈 조정
+2. 답글 버튼 사이즈 변경 안되게
+3. 줄바꿈 표현
+4. 목록 보기, 수정, 삭제 버튼
+5. list 화면 미완료 보기 
