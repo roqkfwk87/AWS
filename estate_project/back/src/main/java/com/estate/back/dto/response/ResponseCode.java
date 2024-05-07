@@ -16,6 +16,7 @@ public interface ResponseCode {
     String DUPLICATIED_ID = "DI";
     String DUPLICATIED_EMAIL = "DE";
     String NO_EXIST_BOARD = "NB";
+    String WRITTEN_COMMENT = "WC";
     String SIGN_IN_FAILED = "SF";
     String AUTHENTICATION_FAILED = "AF";
     String TOKEN_CREATION_FAILED = "TF";

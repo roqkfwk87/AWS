@@ -41,6 +41,30 @@
     opacity: 0.85;
 }
 
+.error-button {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 8px 24px;
+
+    background-color: rgba(255, 84, 64, 1);
+    border-radius: 6px;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 175%;
+
+    color: rgba(255, 255, 255, 1);
+}
+
+.error-button:hover {
+    cursor: pointer;
+    opacity: 0.85;
+}
+
 .disable-button {
     box-sizing: border-box;
     display: flex;
@@ -90,7 +114,7 @@
     height: 20px;
     background-image: url('./assets/image/toggle-active.png');
     background-size: 100% 100%;
-    
+
     cursor: pointer;
 }
 
@@ -139,7 +163,7 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    
+
     color: rgba(255, 255, 255, 1);
 }
 
@@ -157,6 +181,6 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    
+
     color: rgba(138, 146, 166, 1);
 }
