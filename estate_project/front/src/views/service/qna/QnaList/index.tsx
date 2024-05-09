@@ -4,7 +4,7 @@ import { useUserStore } from 'src/stores';
 import { useNavigate } from 'react-router';
 import { AUTH_ABSOLUTE_PATH, COUNT_PER_PAGE, COUNT_PER_SECTION, QNA_DEATIL_ABSOLUTE_PATH, QNA_WRITE_ABSOLUTE_PATH } from 'src/constant';
 import { BoardListItem } from 'src/types';
-import { getBoardListRequest, GetSearchBoardListRequest } from 'src/apis/board';
+import { getBoardListRequest, getSearchBoardListRequest } from 'src/apis/board';
 import { useCookies } from 'react-cookie';
 import { GetBoardListResponseDto, GetSearchBoardListResponseDto } from 'src/apis/board/dto/response';
 import ResponseDto from 'src/apis/response.dto';
@@ -66,6 +66,7 @@ export default function QnaList() {
     const navigator = useNavigate();
 
     const changePage = (boardList: BoardListItem[], totalLenght: number) => {
+        if (!currentSection) return;
         const startIndex = (currentPage - 1) * COUNT_PER_PAGE;
         let endIndex = currentPage * COUNT_PER_PAGE;
         if (endIndex > totalLenght - 1) endIndex = totalLenght;
@@ -74,6 +75,7 @@ export default function QnaList() {
     };
 
     const changeSection = (totalPage: number) => {
+        if (!currentSection) return;
         const startPage = (currentSection * COUNT_PER_SECTION) - (COUNT_PER_SECTION - 1);
         let endPage = currentSection * COUNT_PER_SECTION;
         if (endPage > totalPage) endPage = totalPage;
@@ -83,6 +85,7 @@ export default function QnaList() {
     };
 
     const changeBoardList = (boardList: BoardListItem[]) => {
+        if (isToggleOn) boardList = boardList.filter(board => !board.status);
         setBoardList(boardList);
 
         const totalLenght = boardList.length;
@@ -113,6 +116,9 @@ export default function QnaList() {
 
         const { boardList } = result as GetBoardListResponseDto;
         changeBoardList(boardList);
+
+        setCurrentPage(!boardList.length ? 0 : 1);
+        setCurrentSection(!boardList.length ? 0 : 1);
     };
 
     const getSearchBoardListResponse = (result: GetSearchBoardListResponseDto | ResponseDto | null) => {
@@ -131,9 +137,9 @@ export default function QnaList() {
 
         const { boardList } = result as GetSearchBoardListResponseDto;
         changeBoardList(boardList);
-        setCurrentPage(1);
-        setCurrentSection(1);
 
+        setCurrentPage(!boardList.length ? 0 : 1);
+        setCurrentSection(!boardList.length ? 0 : 1);
     };
 
     //                    event handler                    //
@@ -152,7 +158,7 @@ export default function QnaList() {
     };
 
     const onPreSectionClickHandler = () => {
-        if (currentSection === 1) return;
+        if (currentSection <= 1) return;
         setCurrentSection(currentSection - 1);
         setCurrentPage((currentSection - 1) * COUNT_PER_SECTION);
     };
@@ -172,14 +178,14 @@ export default function QnaList() {
         if (!searchWord) return;
         if (!cookies.accessToken) return;
 
-        GetSearchBoardListRequest(searchWord, cookies.accessToken).then(getSearchBoardListResponse);
+        getSearchBoardListRequest(searchWord, cookies.accessToken).then(getSearchBoardListResponse);
     };
 
     //                    effect                    //
     useEffect(() => {
         if (!cookies.accessToken) return;
-        getBoardListRequest(cookies.accessToken).then(getBoardListResponse);
-    }, []);
+        getSearchBoardListRequest(searchWord, cookies.accessToken).then(getSearchBoardListResponse);
+    }, [isToggleOn]);
 
     useEffect(() => {
         if (!boardList.length) return;

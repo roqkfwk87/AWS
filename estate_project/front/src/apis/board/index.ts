@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { PostBoardRequestDto, PostCommentRequestDto } from './dto/request';
-import { GET_BOARD_LIST_URL, GET_BOARD_URL, GET_SEARCH_BOARD_LIST_URL, INCREASE_VIEW_COUNT_URL, POST_BOARD_REQUEST_URL, POST_COMMENT_REQUEST_URL } from 'src/constant';
+import { PostBoardRequestDto, PostCommentRequestDto, PutBoardRequestDto } from './dto/request';
+import { DELETE_BOARD_URL, GET_BOARD_LIST_URL, GET_BOARD_URL, GET_SEARCH_BOARD_LIST_URL, INCREASE_VIEW_COUNT_URL, POST_BOARD_REQUEST_URL, POST_COMMENT_REQUEST_URL, PUT_BOARD_URL } from 'src/constant';
 import { bearerAuthorization, requestErrorHandler, requestHandler } from '..';
 import ResponseDto from '../response.dto';
 import { GetBoardListResponseDto, GetBoardResponseDto, GetSearchBoardListResponseDto } from './dto/response';
@@ -32,10 +32,11 @@ export const getBoardListRequest = async (accessToken: string) => {
 };
 
 // function: Q&A 검색 리스트 불러오기 API 함수 
-export const GetSearchBoardListRequest = async (searchWord: string, accessToken: string) => {
-    const result = await axios.get(GET_SEARCH_BOARD_LIST_URL(searchWord), bearerAuthorization(accessToken))
+export const getSearchBoardListRequest = async (word: string, accessToken: string) => {
+    const config = { ...bearerAuthorization(accessToken), params: { word } };
+    const result = await axios.get(GET_SEARCH_BOARD_LIST_URL, config)
         .then(requestHandler<GetSearchBoardListResponseDto>)
-        .catch(requestErrorHandler)
+        .catch(requestErrorHandler);
     return result;
 };
 
@@ -47,9 +48,27 @@ export const getBoardRequest = async (receptionNumber: number | string, accessTo
     return result;
 };
 
+// function: Q&A 게시물 수증 API 함수 
+export const putBoardRequest = async (receptionNumber: number | string, requestBody: PutBoardRequestDto, accessToken:string) => {
+    const result = await axios.put(PUT_BOARD_URL(receptionNumber), requestBody, bearerAuthorization(accessToken))
+        .then(requestHandler<ResponseDto>)
+        .catch(requestErrorHandler);
+    return result;
+}
+
 // function: Q&A 게시물 조회수 증가 API 함수 
 export const increaseViewCountRequest = async (receptionNumber: number | string, accessToken: string) => {
     const result = await axios.patch(INCREASE_VIEW_COUNT_URL(receptionNumber), {} ,bearerAuthorization(accessToken))
+        // 성공
+        .then(requestHandler<ResponseDto>)
+        // 실패
+        .catch(requestErrorHandler);
+    return result;
+};
+
+// function: Q&A 게시물 삭제 API 함수 
+export const deleteBoardRequest = async (receptionNumber: number | string, accessToken: string) => {
+    const result = await axios.delete(DELETE_BOARD_URL(receptionNumber),bearerAuthorization(accessToken))
         .then(requestHandler<ResponseDto>)
         .catch(requestErrorHandler);
     return result;

@@ -382,3 +382,37 @@ SU 상태 후 한번더 send를 보내면 뜸
 3. 줄바꿈 표현
 4. 목록 보기, 수정, 삭제 버튼
 5. list 화면 미완료 보기 
+
+----BoardController
+DELETE http://localhost:4000/api/v1/board/10 (존재하지 않는 게시물 경우)
+토큰이 없는 경우 - AF
+
+admin 토큰 eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcxNTEzMTc2MCwiZXhwIjoxNzE1MTY3NzYwfQ.ZRDXcEYfuOVU2L-TMMJs33i6xO1jGUKnEA79dpHz090
+존재하지 않는 게시물 - NB
+
+DELETE http://localhost:4000/api/v1/board/9 (존재하는 게시물 경우)
+작성자가 아닐때 - AF (관리자 토큰)
+
+사용자 계정 토큰 eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZXJ2aWNlMTIzNDUiLCJpYXQiOjE3MTUxMzQ2NjQsImV4cCI6MTcxNTE3MDY2NH0.WDie7grRSipjISzT_jESumkLBOZrLkVi-Rj1g8Ps6zo
+성공 - SU
+
+PUT  http://localhost:4000/api/v1/board/{receptionNumber}
+인증 없이 => AF
+리퀘스트 바디X / 관리자 토큰 => VF
+존재하지 않는 접수번호 
+(관리자 / {
+    "title" : "수정",
+    "contents" : "수정"
+}) => NB 
+사용자 토큰 (eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZXJ2aWNlMTIzNDUiLCJpYXQiOjE3MTUxNDU5NjEsImV4cCI6MTcxNTE4MTk2MX0.0XBN8SjdYecaWf4eiiC8IeC3UuptK93CIY6inJSSbTA)
+작성자 아닐때 => AF 
+답글이 달린 상태 => WC 
+
+----------- qna update
+1. 수정 페이지에 url로 직접 쳐서들어가면 무조건 팅김 -> 고침
+2. 리스트 페이지에 게시물 없어도 페이지가 1 -> 고침
+3. 게시글 작성 페이지에 아무것도 입력 안해도 요청 보내짐 
+4. 존재하지 않는 API 요청 404가 안뜸 -> 처리하지 않은 예외가 발생하면 전부 인증 실패로 가버림 
+5. admin 계정으로 작성된 게시물에 수정 삭제 버튼 활성화 되어 있음 
+6. 검색어에 일부 특수 문자 사용시 요청 실패 (% CORS / ?,#,.:요청 URL이 변조됨)
+7. 검색어가 있을 때 미완료 보기 누르면 전체 결과로 바뀜 

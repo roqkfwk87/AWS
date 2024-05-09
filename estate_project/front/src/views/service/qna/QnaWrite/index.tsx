@@ -21,21 +21,21 @@ export default function QnaWrite() {
     //                    function                    //
     const navigator = useNavigate();
 
-    const postBoardResponse = (result: ResponseDto | null) => {
+    const postBoardResponse = (result: ResponseDto | null ) => {
 
-      const message = 
-        !result ? '서버에 문제가 있습니다.' :
-        result.code === 'VF' ? '제목과 내용을 모두 입력해주세요.' :
-        result.code === 'AF' ? '권한이 없습니다.' :
-        result.code === 'DBE' ? '서버에 문제가 있습니다.' : '' ;
+        const message =
+            !result ? '서버에 문제가 있습니다.' : 
+            result.code === 'VF' ? '제목과 내용을 모두 입력해주세요.' :
+            result.code === 'AF' ? '권한이 없습니다.' :
+            result.code === 'DBE' ? '서버에 문제가 있습니다.' : '';
 
-      if (!result || result.code !== 'SU') {
-        alert(message);
-        return;
-      }
+        if (!result || result.code !== 'SU') {
+            alert(message);
+            return;
+        }
 
-      navigator(QNA_LIST_ABSOLUTE_PATH);
-      
+        navigator(QNA_LIST_ABSOLUTE_PATH);
+
     };
 
     //                    event handler                    //
@@ -55,7 +55,7 @@ export default function QnaWrite() {
     };
 
     const onPostButtonClickHandler = () => {
-        if (!title || !contents) return;
+        if (!title.trim() || !contents.trim()) return;
         if (!cookies.accessToken) return;
 
         const requestBody: PostBoardRequestDto = { title, contents };
